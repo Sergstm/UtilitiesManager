@@ -1,2 +1,2 @@
 # Utilities Manage
-Control your utilities
+Control utilities expense
