@@ -1,1 +1,2 @@
-# UtilitiesManager
+# Utilities Manage
+Control your utilities
