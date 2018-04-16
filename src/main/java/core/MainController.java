@@ -1,15 +1,16 @@
 package core;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
 
     @RequestMapping("/")
-    @ResponseBody
-    public String index() {
-        return "Hello!";
+    public String index(Model model) {
+        String data = "Manage";
+        model.addAttribute("data", data);
+        return "index";
     }
 }
