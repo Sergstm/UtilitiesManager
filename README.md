@@ -1,2 +1,2 @@
-# Utilities Manage
+# Utilities Manager
 Control utilities expense
