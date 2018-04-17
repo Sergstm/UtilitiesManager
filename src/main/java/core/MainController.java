@@ -9,7 +9,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        String data = "Under construction";
+        String data = "Site under construction";
         model.addAttribute("data", data);
         return "index";
     }
