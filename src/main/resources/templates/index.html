@@ -7,7 +7,18 @@
 <body>
 
 <div align="center">
-    <h1 th:text="${data}">Text</h1>
+    <form action="/add" enctype="text/plain" method="get">
+        <select name="name">
+            <option value="FirstServ">First Service</option>
+            <option value="SecondServ">Second Service</option>
+        </select>
+        <p>
+            Previous value <input type="number" name="prev">
+            Present value <input type="number" name="pres">
+            Tariff <input type="number" name="tariff">
+        </p>
+        <p><button type="submit">Send</button></p>
+    </form>
 </div>
 
 </body>
