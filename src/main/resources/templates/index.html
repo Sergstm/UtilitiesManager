@@ -7,18 +7,33 @@
 <body>
 
 <div align="center">
-    <form action="/add" enctype="text/plain" method="get">
-        <select name="name">
-            <option value="FirstService">First Service</option>
-            <option value="SecondService">Second Service</option>
-        </select>
-        <p>
-            Previous value <input type="number" name="prev">
-            Present value <input type="number" name="pres">
-            Tariff <input type="number" name="tariff">
-        </p>
-        <p><button type="submit">Send</button></p>
-    </form>
+    <div>
+        <a href="/add"><button type="submit">Add Order</button></a>
+    </div>
+    <table border="1px solid">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Preview</td>
+            <td>Present</td>
+            <td>Volume</td>
+            <td>Price</td>
+            <td>Date</td>
+        </tr>
+        </thead>
+        <tbody th:each="order : ${orders}" >
+        <tr>
+            <td><span th:text="${order.getId()}">Id</span></td>
+            <td><span th:text="${order.getName()}">Name</span></td>
+            <td><span th:text="${order.getPreviousValue()}">Prev</span></td>
+            <td><span th:text="${order.getPresentValue()}">Pres</span></td>
+            <td><span th:text="${order.getVolume()}">Vol</span></td>
+            <td><span th:text="${order.getPrice()}">Price</span></td>
+            <td><span th:text="${order.getDateTime()}">Date</span></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

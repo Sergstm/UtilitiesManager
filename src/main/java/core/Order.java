@@ -16,6 +16,8 @@ public class Order {
     private BigDecimal previousValue;
     private BigDecimal presentValue;
     private BigDecimal tariff;
+    private BigDecimal volume;
+    private BigDecimal price;
     private LocalDateTime dateTime;
 
     public Order() {
@@ -23,11 +25,13 @@ public class Order {
 
     public Order(String name,
                  BigDecimal previousValue, BigDecimal presentValue, BigDecimal tariff,
-                 LocalDateTime dateTime) {
+                 BigDecimal volume, BigDecimal price, LocalDateTime dateTime) {
         this.name = name;
         this.previousValue = previousValue;
         this.presentValue = presentValue;
         this.tariff = tariff;
+        this.volume = volume;
+        this.price = price;
         this.dateTime = dateTime;
     }
 
@@ -35,59 +39,31 @@ public class Order {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public BigDecimal getPreviousValue() {
         return previousValue;
     }
 
-    public void setPreviousValue(BigDecimal previousValue) {
-        this.previousValue = previousValue;
-    }
-
     public BigDecimal getPresentValue() {
         return presentValue;
-    }
-
-    public void setPresentValue(BigDecimal presentValue) {
-        this.presentValue = presentValue;
     }
 
     public BigDecimal getTariff() {
         return tariff;
     }
 
-    public void setTariff(BigDecimal tariff) {
-        this.tariff = tariff;
+    public BigDecimal getVolume() {
+        return volume;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
     }
 
     public LocalDateTime getDateTime() {
         return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", previousValue=" + previousValue +
-                ", presentValue=" + presentValue +
-                ", tariff=" + tariff +
-                ", dateTime=" + dateTime +
-                '}';
     }
 }

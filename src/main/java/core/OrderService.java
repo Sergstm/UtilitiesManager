@@ -14,8 +14,16 @@ public class OrderService {
     }
 
     public void addOrder(String name, BigDecimal prev, BigDecimal pres, BigDecimal tariff) {
+
+        BigDecimal vol = pres.subtract(prev);
+        BigDecimal price = vol.multiply(tariff);
         LocalDateTime dateTime = LocalDateTime.now();
-        Order order = new Order(name, prev, pres, tariff, dateTime);
+
+        Order order = new Order(name, prev, pres, tariff, vol, price, dateTime);
         orderRepository.save(order);
+    }
+
+    public Iterable<Order> getOrders() {
+        return orderRepository.findAll();
     }
 }
