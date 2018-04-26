@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add page</title>
+</head>
+<body>
+<div align="center">
+
+    <div>
+        <a href="/addTemplate"><button type="submit">Add Template</button></a>
+        <hr>
+    </div>
+
+    <form action="/saveOrder" method="get">
+        <select name="name" th:each="orderTemplate : ${orderTemplates}">
+            <option th:value="${orderTemplate.getName()}"
+                    th:text="${orderTemplate.getName()}">Template</option>
+        </select>
+        <p>Previous value <input type="text" name="prev"></p>
+        <p>Present value <input type="text" name="pres"></p>
+        <p><button type="submit">Send</button></p>
+    </form>
+
+</div>
+</body>
+</html>

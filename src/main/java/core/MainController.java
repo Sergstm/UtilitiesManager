@@ -15,6 +15,7 @@ public class MainController {
         this.orderService = orderService;
     }
 
+    //Index page
     @RequestMapping("/")
     public String index(Model model) {
         Iterable<Order> orders = orderService.getOrders();
@@ -22,21 +23,34 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/add")
-    public String addPage() {
-        return "add";
-    }
-
-    @RequestMapping("/preferences")
-    public String preferences() {
-        return "preferences";
-    }
-
+    //Add complete order
     @RequestMapping("/addOrder")
-    public String addOrder(@RequestParam(value = "tariff2", required = false) BigDecimal tariff2,
-                           String name, BigDecimal prev, BigDecimal pres, BigDecimal tariff1) {
-        orderService.addOrder(name, prev, pres, tariff1, tariff2);
+    public String addOrder(Model model) {
+        Iterable<OrderTemplate> orderTemplates = orderService.getTemplates();
+        model.addAttribute("orderTemplates", orderTemplates);
+        return "addOrder";
+    }
+
+    @RequestMapping("/saveOrder")
+    public String saveOrder(@RequestParam String name, BigDecimal prev, BigDecimal pres) {
+        orderService.saveOrder(name, prev, pres);
         return "redirect:/";
     }
+
+    //Add order template
+    @RequestMapping("/addTemplate")
+    public String addTemplate() {
+        return "addTemplate";
+    }
+
+    @RequestMapping("/saveTemplate")
+    public String saveTemplate(@RequestParam(value = "tariff2", required = false) BigDecimal tariff2,
+                               String name, BigDecimal tariff1) {
+        orderService.saveTemplate(name, tariff1, tariff2);
+        return "redirect:/";
+    }
+
+
+
 
 }
