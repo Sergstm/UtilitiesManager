@@ -5,8 +5,8 @@
     <title>Add page</title>
 </head>
 <body>
-
 <div align="center">
+
     <form action="/addOrder" method="get">
         <select name="name">
             <option value="hotWater">Hot Water</option>
@@ -16,10 +16,12 @@
         </select>
         <p>Previous value <input type="text" name="prev"></p>
         <p>Present value <input type="text" name="pres"></p>
-        <p>Tariff <input type="text" name="tariff"></p>
+        <p>Tariff1 <input type="text" name="tariff1"></p>
+        <p>Tariff2 <input type="text" name="tariff2"></p>
         <p><button type="submit">Send</button></p>
     </form>
-</div>
+    <a href="/preferences"><button type="submit">Settings</button></a>
 
+</div>
 </body>
 </html>

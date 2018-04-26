@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 
@@ -28,10 +27,15 @@ public class MainController {
         return "add";
     }
 
+    @RequestMapping("/preferences")
+    public String preferences() {
+        return "preferences";
+    }
+
     @RequestMapping("/addOrder")
-    public String addOrder(@RequestParam String name,
-                         BigDecimal prev, BigDecimal pres, BigDecimal tariff) {
-        orderService.addOrder(name, prev, pres, tariff);
+    public String addOrder(@RequestParam(value = "tariff2", required = false) BigDecimal tariff2,
+                           String name, BigDecimal prev, BigDecimal pres, BigDecimal tariff1) {
+        orderService.addOrder(name, prev, pres, tariff1, tariff2);
         return "redirect:/";
     }
 
