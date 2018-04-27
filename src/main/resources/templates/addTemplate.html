@@ -7,13 +7,43 @@
 <body>
 <div align="center">
 
-    <h1>Add new Service</h1>
-    <form action="/saveTemplate" method="get">
-        <p>Name <input type="text" name="name"></p>
-        <p>Tariff1 <input type="text" name="tariff1"></p>
-        <p>Tariff2 <input type="text" name="tariff2"></p>
-        <p><button type="submit">Send</button></p>
-    </form>
+    <div>
+        <h1>Add new Template</h1>
+        <form action="/saveTemplate" method="post">
+            <p>Name <input type="text" placeholder="Enter Template name" name="name" required></p>
+            <p>Tariff1: <input type="text" placeholder="for easy tariff" name="tariff1" required></p>
+            <p>Tariff2: <input type="text" placeholder="for extended tariff" name="tariff2"></p>
+            <p><button type="submit">Create Template</button></p>
+        </form>
+
+        <p>(You can fill only one "Tariff1" field, for easy tariff,
+            or fill all fields, for extended tariff)</p>
+        <div>
+            <a href="/addOrder"><button type="submit">Back to Add Order</button></a>
+        </div>
+        <hr>
+        <div>
+            <table border="1px solid">
+                <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>First value</td>
+                    <td>Second value</td>
+                </tr>
+                </thead>
+                <tbody th:each="createdTemplate : ${createdTemplates}">
+                <tr>
+                    <td><span th:text="${createdTemplate.getId()}">Id</span></td>
+                    <td><span th:text="${createdTemplate.getName()}">Name</span></td>
+                    <td><span th:text="${createdTemplate.getTariff1()}">Tariff1</span></td>
+                    <td><span th:text="${createdTemplate.getTariff2()}">Tariff2</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 
 </div>
 </body>

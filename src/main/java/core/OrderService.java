@@ -60,5 +60,4 @@ public class OrderService {
         return orderTemplateRepository.findAll();
     }
 
-
 }

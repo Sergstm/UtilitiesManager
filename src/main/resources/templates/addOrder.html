@@ -8,20 +8,48 @@
 <div align="center">
 
     <div>
-        <a href="/addTemplate"><button type="submit">Add Template</button></a>
+        <h1>Add new Order</h1>
+        <form action="/saveOrder" method="post">
+            <select name="id" required>
+                <option selected disabled>Select template</option>
+                <option th:each="orderTemplate : ${orderTemplates}"
+                        th:value="${orderTemplate.getId()}"
+                        th:text="${orderTemplate.getName()}">Template</option>
+            </select>
+            <h3>Enter counter values</h3>
+            <p>Previous value: <input type="text" name="prev" required></p>
+            <p>Present value: <input type="text" name="pres" required></p>
+            <p><button type="submit">Add order</button></p>
+        </form>
+        <hr>
+        <h4>You can create your own template</h4>
+        <div><a href="/addTemplate"><button type="submit">Add New Template</button></a></div>
+        <hr>
+        <table border="1px solid">
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Preview</td>
+                <td>Present</td>
+                <td>Volume</td>
+                <td>Price</td>
+                <td>Date</td>
+            </tr>
+            </thead>
+            <tbody th:each="order : ${orders}">
+            <tr>
+                <td><span th:text="${order.getId()}">Id</span></td>
+                <td><span th:text="${order.getName()}">Name</span></td>
+                <td><span th:text="${order.getPreviousValue()}">Prev</span></td>
+                <td><span th:text="${order.getPresentValue()}">Pres</span></td>
+                <td><span th:text="${order.getVolume()}">Vol</span></td>
+                <td><span th:text="${order.getPrice()}">Price</span></td>
+                <td><span th:text="${order.getDateTime()}">Date</span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <br>
-    <form action="/saveOrder" method="get">
-        <select name="id">
-            <span th:each="orderTemplate : ${orderTemplates}">
-                <option th:value="${orderTemplate.getId()}"
-                    th:text="${orderTemplate.getName()}">Template</option>
-            </span>
-        </select>
-        <p>Previous value <input type="text" name="prev"></p>
-        <p>Present value <input type="text" name="pres"></p>
-        <p><button type="submit">Send</button></p>
-    </form>
 
 </div>
 </body>
