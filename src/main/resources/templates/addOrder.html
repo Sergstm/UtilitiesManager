@@ -9,13 +9,14 @@
 
     <div>
         <a href="/addTemplate"><button type="submit">Add Template</button></a>
-        <hr>
     </div>
-
+    <br>
     <form action="/saveOrder" method="get">
-        <select name="name" th:each="orderTemplate : ${orderTemplates}">
-            <option th:value="${orderTemplate.getName()}"
+        <select name="id">
+            <span th:each="orderTemplate : ${orderTemplates}">
+                <option th:value="${orderTemplate.getId()}"
                     th:text="${orderTemplate.getName()}">Template</option>
+            </span>
         </select>
         <p>Previous value <input type="text" name="prev"></p>
         <p>Present value <input type="text" name="pres"></p>

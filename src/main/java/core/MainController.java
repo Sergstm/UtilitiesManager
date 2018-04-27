@@ -23,7 +23,7 @@ public class MainController {
         return "index";
     }
 
-    //Add complete order
+    //Orders==============================================================================
     @RequestMapping("/addOrder")
     public String addOrder(Model model) {
         Iterable<OrderTemplate> orderTemplates = orderService.getTemplates();
@@ -32,12 +32,12 @@ public class MainController {
     }
 
     @RequestMapping("/saveOrder")
-    public String saveOrder(@RequestParam String name, BigDecimal prev, BigDecimal pres) {
-        orderService.saveOrder(name, prev, pres);
+    public String saveOrder(@RequestParam long id, BigDecimal prev, BigDecimal pres) {
+        orderService.saveOrder(id, prev, pres);
         return "redirect:/";
     }
 
-    //Add order template
+    //Templates====================================================================================
     @RequestMapping("/addTemplate")
     public String addTemplate() {
         return "addTemplate";

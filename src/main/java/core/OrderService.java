@@ -16,12 +16,13 @@ public class OrderService {
         this.orderTemplateRepository = orderTemplateRepository;
     }
 
-    public void saveOrder(String name, BigDecimal prev, BigDecimal pres) {
-
-        long id = 1; //HARDCODING
+    //Orders=========================================================================
+    public void saveOrder(long id, BigDecimal prev, BigDecimal pres) {
         OrderTemplate orderTemplate = orderTemplateRepository.findById(id).get();
         BigDecimal tariff1 = orderTemplate.getTariff1();
         BigDecimal tariff2 = orderTemplate.getTariff2();
+        String name = orderTemplate.getName();
+
         BigDecimal vol = pres.subtract(prev);
         BigDecimal price;
 
@@ -46,6 +47,7 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    //Templates========================================================================
     public void saveTemplate(String name, BigDecimal tariff1, BigDecimal tariff2) {
         if (tariff2 == null) {
             tariff2 = BigDecimal.ZERO;
