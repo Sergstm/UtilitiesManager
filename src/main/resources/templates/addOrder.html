@@ -3,54 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <title>Add page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div align="center">
 
-    <div>
-        <h1>Add new Order</h1>
-        <form action="/saveOrder" method="post">
-            <select name="id" required>
-                <option selected disabled>Select template</option>
-                <option th:each="orderTemplate : ${orderTemplates}"
-                        th:value="${orderTemplate.getId()}"
-                        th:text="${orderTemplate.getName()}">Template</option>
-            </select>
-            <h3>Enter counter values</h3>
-            <p>Previous value: <input type="text" name="prev" required></p>
-            <p>Present value: <input type="text" name="pres" required></p>
-            <p><button type="submit">Add order</button></p>
-        </form>
-        <hr>
-        <h4>You can create your own template</h4>
-        <div><a href="/addTemplate"><button type="submit">Add New Template</button></a></div>
-        <hr>
-        <table border="1px solid">
-            <thead>
-            <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Preview</td>
-                <td>Present</td>
-                <td>Volume</td>
-                <td>Price</td>
-                <td>Date</td>
-            </tr>
-            </thead>
-            <tbody th:each="order : ${orders}">
-            <tr>
-                <td><span th:text="${order.getId()}">Id</span></td>
-                <td><span th:text="${order.getName()}">Name</span></td>
-                <td><span th:text="${order.getPreviousValue()}">Prev</span></td>
-                <td><span th:text="${order.getPresentValue()}">Pres</span></td>
-                <td><span th:text="${order.getVolume()}">Vol</span></td>
-                <td><span th:text="${order.getPrice()}">Price</span></td>
-                <td><span th:text="${order.getDateTime()}">Date</span></td>
-            </tr>
-            </tbody>
-        </table>
+
+<div class="container border">
+    <div class="row">
+        <div class="col">
+            <h1>Add new Order</h1>
+        </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <form action="/saveOrder" method="post">
+                <div class="row justify-content-center">
+                    <div class="form-group col-2">
+                        <select class="form-control" name="id" required>
+                            <option selected disabled>Select Template</option>
+                            <option th:each="orderTemplate : ${orderTemplates}"
+                                    th:value="${orderTemplate.getId()}"
+                                    th:text="${orderTemplate.getName()}">Template
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <h4>Enter counter values</h4>
+                </div>
+                <div class="form-group">
+                    <label for="prev">Previous value:</label>
+                    <input type="text" name="prev" id="prev" required>
+                </div>
+                <div class="form-group">
+                    <label for="pres">Present value"</label>
+                    <input type="text" name="pres" id="pres" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add order</button>
+            </form>
+        </div>
+    </div>
+    <div class="row border">
+        <div class="col">
+            <h5>You can create your own template</h5>
+            <div>
+                <a href="/addTemplate">
+                    <button type="button" class="btn btn-secondary">Add New Template</button>
+                </a>
+            </div>
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Preview</th>
+                    <th>Present</th>
+                    <th>Volume</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody th:each="order : ${orders}">
+                <tr>
+                    <td th:text="${order.getId()}">Id</td>
+                    <td th:text="${order.getName()}">Name</td>
+                    <td th:text="${order.getPreviousValue()}">Prev</td>
+                    <td th:text="${order.getPresentValue()}">Pres</td>
+                    <td th:text="${order.getVolume()}">Vol</td>
+                    <td th:text="${order.getPrice()}">Price</td>
+                    <td th:text="${order.getDateTime()}">Date</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="js/jquery-3.3.1.slim.min.js"></script>
 </body>
 </html>
