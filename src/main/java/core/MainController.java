@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 
@@ -21,6 +22,12 @@ public class MainController {
         return "index";
     }
 
+    //Error page
+    @RequestMapping("/errPage")
+    public String error() {
+        return "errPage";
+    }
+
     //Orders==============================================================================
     @RequestMapping("/addOrder")
     public String addOrder(Model model) {
@@ -34,7 +41,11 @@ public class MainController {
 
     @RequestMapping("/saveOrder")
     public String saveOrder(@RequestParam long id, BigDecimal prev, BigDecimal pres) {
-        orderService.saveOrder(id, prev, pres);
+        if (pres.compareTo(prev) < 0) {
+            return "redirect:/errPage";
+        } else {
+            orderService.saveOrder(id, prev, pres);
+        }
         return "redirect:/addOrder";
     }
 
