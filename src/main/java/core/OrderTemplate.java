@@ -12,7 +12,9 @@ public class OrderTemplate {
     private long id;
 
     private String name;
+    @Column(precision = 19, scale = 3)
     private BigDecimal tariff1;
+    @Column(precision = 19, scale = 3)
     private BigDecimal tariff2;
 
     public OrderTemplate() {

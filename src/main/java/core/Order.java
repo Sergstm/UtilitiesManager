@@ -13,11 +13,17 @@ public class Order {
     private long id;
 
     private String name;
+    @Column(precision = 19, scale = 3)
     private BigDecimal previousValue;
+    @Column(precision = 19, scale = 3)
     private BigDecimal presentValue;
+    @Column(precision = 19, scale = 3)
     private BigDecimal tariff1;
+    @Column(precision = 19, scale = 3)
     private BigDecimal tariff2;
+    @Column(precision = 19, scale = 3)
     private BigDecimal volume;
+    @Column(precision = 19, scale = 3)
     private BigDecimal price;
     private LocalDateTime dateTime;
 
