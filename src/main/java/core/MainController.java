@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class MainController {
@@ -35,7 +35,9 @@ public class MainController {
         model.addAttribute("orderTemplates", orderTemplates);
 
         Iterable<Order> orders = orderService.getOrders();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("Y.MM.dd - HH:mm");
         model.addAttribute("orders", orders);
+        model.addAttribute("dtf", dtf);
         return "addOrder";
     }
 

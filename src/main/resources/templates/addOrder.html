@@ -77,7 +77,7 @@
                     <td th:text="${order.getPresentValue()}">Pres</td>
                     <td th:text="${order.getVolume()}">Vol</td>
                     <td th:text="${order.getPrice()}">Price</td>
-                    <td th:text="${order.getDateTime()}">Date</td>
+                    <td th:text="${order.getDateTime().format(dtf)}">Date</td>
                 </tr>
                 </tbody>
             </table>
