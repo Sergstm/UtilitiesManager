@@ -10,7 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    private PasswordEncoder encoder = PasswordEncoderFactories
+            .createDelegatingPasswordEncoder();
 
     private final CustomUserDetailsService customUserDetailsService;
     public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
@@ -26,7 +27,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "**/static/**").permitAll();
-//                .anyRequest().authenticated();
+                .antMatchers("/", "/registration", "/addUser").permitAll()
+                .antMatchers("/css/**", "/js/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/deny")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+//                .logoutUrl("/logout")
+                .permitAll()
+//                .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(true);
     }
 }

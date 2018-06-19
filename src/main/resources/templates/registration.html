@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row card-header">
+        <div class="col">
+            <h1>Registration new user</h1>
+        </div>
+    </div>
+    <div class="row card-body border">
+        <div class="col">
+            <form action="/addUser" method="post">
+                <div class="form-group">
+                    <label for="username">Username: </label>
+                    <input type="text" placeholder="Enter username"
+                           name="username" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" placeholder="Enter password"
+                           name="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create User</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

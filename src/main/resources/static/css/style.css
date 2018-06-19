@@ -10,3 +10,7 @@ body {
 div {
     text-align: center;
 }
+
+.logout {
+    text-align: right;
+}

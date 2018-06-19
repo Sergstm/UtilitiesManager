@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class CustomUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String login;
     private String password;
