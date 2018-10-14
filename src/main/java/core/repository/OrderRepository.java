@@ -1,8 +1,9 @@
-package core;
+package core.repository;
 
+import core.Order;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderTemplateRepository extends CrudRepository<OrderTemplate, Long> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
 }

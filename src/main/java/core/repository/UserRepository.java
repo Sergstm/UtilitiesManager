@@ -1,5 +1,6 @@
-package core.security;
+package core.repository;
 
+import core.security.CustomUser;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
