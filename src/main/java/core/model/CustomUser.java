@@ -1,4 +1,6 @@
-package core.security;
+package core.model;
+
+import core.security.UserRole;
 
 import javax.persistence.*;
 

@@ -1,6 +1,6 @@
 package core.repository;
 
-import core.OrderTemplate;
+import core.model.OrderTemplate;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

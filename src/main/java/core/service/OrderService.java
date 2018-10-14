@@ -1,5 +1,7 @@
-package core;
+package core.service;
 
+import core.model.Order;
+import core.model.OrderTemplate;
 import core.repository.OrderRepository;
 import core.repository.OrderTemplateRepository;
 import org.springframework.stereotype.Service;

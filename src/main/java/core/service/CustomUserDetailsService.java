@@ -1,6 +1,8 @@
-package core.security;
+package core.service;
 
 import core.repository.UserRepository;
+import core.model.CustomUser;
+import core.security.CustomUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

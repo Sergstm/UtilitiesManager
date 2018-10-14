@@ -1,6 +1,8 @@
-package core.security;
+package core.service;
 
 import core.repository.UserRepository;
+import core.model.CustomUser;
+import core.security.UserRole;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

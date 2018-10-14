@@ -1,6 +1,9 @@
 package core;
 
-import core.security.UserService;
+import core.model.Order;
+import core.model.OrderTemplate;
+import core.service.UserService;
+import core.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
