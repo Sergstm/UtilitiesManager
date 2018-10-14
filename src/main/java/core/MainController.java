@@ -50,7 +50,7 @@ public class MainController {
     @RequestMapping("/addUser")
     public String addUser(@RequestParam String username, String password) {
         userService.addUser(username, password);
-        return "index";
+        return "login";
     }
 
     //Denied page

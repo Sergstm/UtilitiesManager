@@ -3,6 +3,7 @@ package core.model;
 import core.security.UserRole;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +16,14 @@ public class CustomUser {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Order> orders;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<OrderTemplate> orderTemplates;
 
     public CustomUser() {
     }
@@ -61,5 +70,21 @@ public class CustomUser {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<OrderTemplate> getOrderTemplates() {
+        return orderTemplates;
+    }
+
+    public void setOrderTemplates(List<OrderTemplate> orderTemplates) {
+        this.orderTemplates = orderTemplates;
     }
 }
