@@ -12,7 +12,10 @@
     <div class="row card-header">
         <div class="col">
             <h1>Add new Template</h1>
-            <div class="logout"><a href="/logout">LogOUT</a></div>
+            <h5 class="login">
+                You are logged in as: <span th:text="${login}"></span>
+            </h5>
+            <div class="login"><a href="/logout">LogOUT</a></div>
         </div>
     </div>
     <br>

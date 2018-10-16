@@ -1,21 +1,28 @@
 package core.service;
 
+import core.model.CustomUser;
 import core.model.Order;
 import core.model.OrderTemplate;
 import core.repository.OrderRepository;
 import core.repository.OrderTemplateRepository;
+import core.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class OrderService {
 
+    private final UserService userService;
+    private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final OrderTemplateRepository orderTemplateRepository;
-    public OrderService(OrderRepository orderRepository,
+    public OrderService(UserService userService, UserRepository userRepository, OrderRepository orderRepository,
                         OrderTemplateRepository orderTemplateRepository) {
+        this.userService = userService;
+        this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.orderTemplateRepository = orderTemplateRepository;
     }
@@ -44,7 +51,13 @@ public class OrderService {
         }
         LocalDateTime dateTime = LocalDateTime.now();
         Order order = new Order(name, prev, pres, tariff1, tariff2, vol, price, dateTime);
-        orderRepository.save(order);
+
+        String currentLogin = userService.getCurrentLogin();
+        CustomUser customUser = userRepository.findByLogin(currentLogin).get();
+        List<Order> orders = customUser.getOrders();
+        int size = orders.size();
+        orders.add(size, order);
+        userRepository.save(customUser);
     }
 
     public Iterable<Order> getOrders() {
@@ -57,7 +70,13 @@ public class OrderService {
             tariff2 = BigDecimal.ZERO;
         }
         OrderTemplate orderTemplate = new OrderTemplate(name, tariff1, tariff2);
-        orderTemplateRepository.save(orderTemplate);
+
+        String currentLogin = userService.getCurrentLogin();
+        CustomUser customUser = userRepository.findByLogin(currentLogin).get();
+        List<OrderTemplate> templates = customUser.getOrderTemplates();
+        int size = templates.size();
+        templates.add(size, orderTemplate);
+        userRepository.save(customUser);
     }
 
     public Iterable<OrderTemplate> getTemplates() {

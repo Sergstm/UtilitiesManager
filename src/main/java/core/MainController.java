@@ -2,8 +2,8 @@ package core;
 
 import core.model.Order;
 import core.model.OrderTemplate;
-import core.service.UserService;
 import core.service.OrderService;
+import core.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -65,14 +66,17 @@ public class MainController {
         return "errPage";
     }
 
-    //Orders==============================================================================
+    //Orders==========================================================================
     @RequestMapping("/addOrder")
     public String addOrder(Model model) {
-        Iterable<OrderTemplate> orderTemplates = orderService.getTemplates();
-        model.addAttribute("orderTemplates", orderTemplates);
+        String currentLogin = userService.getCurrentLogin();
+        model.addAttribute("login", currentLogin);
 
-        Iterable<Order> orders = orderService.getOrders();
+        List<OrderTemplate> orderTemplates = userService.getData().get().getOrderTemplates();
+        List<Order> orders = userService.getData().get().getOrders();
+
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("Y.MM.dd - HH:mm");
+        model.addAttribute("orderTemplates", orderTemplates);
         model.addAttribute("orders", orders);
         model.addAttribute("dtf", dtf);
         return "addOrder";
@@ -88,17 +92,19 @@ public class MainController {
         return "redirect:/addOrder";
     }
 
-    //Templates====================================================================================
+    //Templates=======================================================================
     @RequestMapping("/addTemplate")
     public String addTemplate(Model model) {
-        Iterable<OrderTemplate> createdTemplates = orderService.getTemplates();
+        String currentLogin = userService.getCurrentLogin();
+        model.addAttribute("login", currentLogin);
+        List<OrderTemplate> createdTemplates = userService.getData().get().getOrderTemplates();
         model.addAttribute("createdTemplates", createdTemplates);
         return "addTemplate";
     }
 
     @RequestMapping("/saveTemplate")
-    public String saveTemplate(@RequestParam(value = "tariff2", required = false) BigDecimal tariff2,
-                               String name, BigDecimal tariff1) {
+    public String saveTemplate(@RequestParam(value = "tariff2",
+            required = false) BigDecimal tariff2, String name, BigDecimal tariff1) {
         orderService.saveTemplate(name, tariff1, tariff2);
         return "redirect:/addTemplate";
     }
