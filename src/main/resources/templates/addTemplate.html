@@ -18,7 +18,6 @@
             <div class="login"><a href="/logout">LogOUT</a></div>
         </div>
     </div>
-    <br>
     <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <form action="/saveTemplate" method="post">
@@ -41,37 +40,42 @@
                     or fill all fields, for extended tariff)</h6>
                 <button type="submit" class="btn btn-primary">Create Template</button>
             </form>
+            <div>
+                <a href="/addOrder">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                        Back to Add Order
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
-    <br>
     <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
-            <a href="/addOrder">
-                <button type="button" class="btn btn-secondary">Back to Add Order</button>
-            </a>
-        </div>
-    </div>
-    <br>
-    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>First value</th>
-                    <th>Second value</th>
-                </tr>
-                </thead>
-                <tbody th:each="createdTemplate : ${createdTemplates}">
-                <tr>
-                    <td th:text="${createdTemplate.getId()}">Id</td>
-                    <td th:text="${createdTemplate.getName()}">Name</td>
-                    <td th:text="${createdTemplate.getTariff1()}">Tariff1</td>
-                    <td th:text="${createdTemplate.getTariff2()}">Tariff2</td>
-                </tr>
-                </tbody>
-            </table>
+            <form action="/delTemplate" method="post">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>First value</th>
+                        <th>Second value</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="createdTemplate : ${createdTemplates}">
+                    <tr>
+                        <td th:text="${createdTemplate.getId()}">Id</td>
+                        <td th:text="${createdTemplate.getName()}">Name</td>
+                        <td th:text="${createdTemplate.getTariff1()}">Tariff1</td>
+                        <td th:text="${createdTemplate.getTariff2()}">Tariff2</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" name="id"
+                                    th:value="${createdTemplate.id}">Delete
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
 </div>

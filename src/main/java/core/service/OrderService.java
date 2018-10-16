@@ -19,7 +19,8 @@ public class OrderService {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final OrderTemplateRepository orderTemplateRepository;
-    public OrderService(UserService userService, UserRepository userRepository, OrderRepository orderRepository,
+    public OrderService(UserService userService, UserRepository userRepository,
+                        OrderRepository orderRepository,
                         OrderTemplateRepository orderTemplateRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
@@ -64,6 +65,10 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public void delOrder(long id) {
+        orderRepository.deleteById(id);
+    }
+
     //Templates========================================================================
     public void saveTemplate(String name, BigDecimal tariff1, BigDecimal tariff2) {
         if (tariff2 == null) {
@@ -81,6 +86,10 @@ public class OrderService {
 
     public Iterable<OrderTemplate> getTemplates() {
         return orderTemplateRepository.findAll();
+    }
+
+    public void delTemplate(long id) {
+        orderTemplateRepository.deleteById(id);
     }
 
 }

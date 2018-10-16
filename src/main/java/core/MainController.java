@@ -72,7 +72,8 @@ public class MainController {
         String currentLogin = userService.getCurrentLogin();
         model.addAttribute("login", currentLogin);
 
-        List<OrderTemplate> orderTemplates = userService.getData().get().getOrderTemplates();
+        List<OrderTemplate> orderTemplates = userService.getData().get()
+                .getOrderTemplates();
         List<Order> orders = userService.getData().get().getOrders();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("Y.MM.dd - HH:mm");
@@ -92,12 +93,19 @@ public class MainController {
         return "redirect:/addOrder";
     }
 
+    @RequestMapping("/delOrder")
+    public String delOrder(@RequestParam long id) {
+        orderService.delOrder(id);
+        return "redirect:/addOrder";
+    }
+
     //Templates=======================================================================
     @RequestMapping("/addTemplate")
     public String addTemplate(Model model) {
         String currentLogin = userService.getCurrentLogin();
         model.addAttribute("login", currentLogin);
-        List<OrderTemplate> createdTemplates = userService.getData().get().getOrderTemplates();
+        List<OrderTemplate> createdTemplates = userService.getData().get()
+                .getOrderTemplates();
         model.addAttribute("createdTemplates", createdTemplates);
         return "addTemplate";
     }
@@ -106,6 +114,12 @@ public class MainController {
     public String saveTemplate(@RequestParam(value = "tariff2",
             required = false) BigDecimal tariff2, String name, BigDecimal tariff1) {
         orderService.saveTemplate(name, tariff1, tariff2);
+        return "redirect:/addTemplate";
+    }
+
+    @RequestMapping("/delTemplate")
+    public String delTemplate(@RequestParam long id) {
+        orderService.delTemplate(id);
         return "redirect:/addTemplate";
     }
 

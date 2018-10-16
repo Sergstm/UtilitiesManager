@@ -16,6 +16,8 @@
     </div>
     <div class="row card-body border">
         <div class="col">
+            <h3 th:if="${error}">Invalid Login or Password</h3>
+            <h3 th:if="${logout}">You are logout</h3>
             <form action="/login" method="post">
                 <div class="form-group">
                     <label for="username">Username: </label>
@@ -29,8 +31,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
             </form>
-            <h3 th:if="${error}">Invalid Login or Password</h3>
-            <h3 th:if="${logout}">You are logout</h3>
+            <div>
+                <a href="/">
+                    <button type="button"
+                            class="btn btn-secondary btn-sm">Back to Main Page
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
