@@ -61,23 +61,23 @@
                     <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Date</th>
                         <th>Name</th>
                         <th>Preview</th>
                         <th>Present</th>
                         <th>Volume</th>
                         <th>Price</th>
-                        <th>Date</th>
                     </tr>
                     </thead>
                     <tbody th:each="order : ${orders}">
                     <tr>
                         <td th:text="${order.getId()}">Id</td>
+                        <td th:text="${order.getDateTime().format(dtf)}">Date</td>
                         <td th:text="${order.getName()}">Name</td>
                         <td th:text="${order.getPreviousValue()}">Prev</td>
                         <td th:text="${order.getPresentValue()}">Pres</td>
                         <td th:text="${order.getVolume()}">Vol</td>
                         <td th:text="${order.getPrice()}">Price</td>
-                        <td th:text="${order.getDateTime().format(dtf)}">Date</td>
                         <td>
                             <button class="btn btn-danger btn-sm" name="id"
                                     th:value="${order.id}">Delete

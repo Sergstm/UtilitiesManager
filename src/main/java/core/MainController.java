@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -70,13 +71,12 @@ public class MainController {
     @RequestMapping("/addOrder")
     public String addOrder(Model model) {
         String currentLogin = userService.getCurrentLogin();
-        model.addAttribute("login", currentLogin);
-
         List<OrderTemplate> orderTemplates = userService.getData().get()
                 .getOrderTemplates();
         List<Order> orders = userService.getData().get().getOrders();
-
+        Collections.reverse(orders);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("Y.MM.dd - HH:mm");
+        model.addAttribute("login", currentLogin);
         model.addAttribute("orderTemplates", orderTemplates);
         model.addAttribute("orders", orders);
         model.addAttribute("dtf", dtf);
@@ -103,9 +103,10 @@ public class MainController {
     @RequestMapping("/addTemplate")
     public String addTemplate(Model model) {
         String currentLogin = userService.getCurrentLogin();
-        model.addAttribute("login", currentLogin);
         List<OrderTemplate> createdTemplates = userService.getData().get()
                 .getOrderTemplates();
+
+        model.addAttribute("login", currentLogin);
         model.addAttribute("createdTemplates", createdTemplates);
         return "addTemplate";
     }

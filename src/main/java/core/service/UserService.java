@@ -31,12 +31,22 @@ public class UserService {
     public void addUser(String username, String password) {
         CustomUser user = new CustomUser(username,
                 encoder.encode(password), UserRole.USER);
+
         List<Order> orders = initOrders();
         user.setOrders(orders);
 
         List<OrderTemplate> orderTemplates = initOrderTemplates();
         user.setOrderTemplates(orderTemplates);
+
         userRepository.save(user);
+    }
+
+    public String getCurrentLogin() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    public Optional<CustomUser> getData() {
+        return userRepository.findByLogin(getCurrentLogin());
     }
 
     private List<Order> initOrders() {
@@ -56,13 +66,6 @@ public class UserService {
         return orderTemplates;
     }
 
-    public String getCurrentLogin() {
-        return SecurityContextHolder.getContext()
-                .getAuthentication().getName();
-    }
 
-    public Optional<CustomUser> getData() {
-        return userRepository.findByLogin(getCurrentLogin());
-    }
 
 }
