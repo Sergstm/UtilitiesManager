@@ -9,8 +9,8 @@
 <body>
 
 <div class="container">
-    <div class="row card-header">
-        <div class="col">
+    <div class="row card-header shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="col card-header">
             <h1>Add new Order</h1>
             <h5 class="login">
                 You are logged in as: <span th:text="${login}"></span>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <br>
-    <div class="row card-body border">
+    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <form action="/saveOrder" method="post">
                 <div class="row justify-content-center">
@@ -49,7 +49,7 @@
         </div>
     </div>
     <br>
-    <div class="row card-body border">
+    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <h5>You can create your own template</h5>
             <a href="/addTemplate">
@@ -58,7 +58,7 @@
         </div>
     </div>
     <br>
-    <div class="row card-body border">
+    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <table class="table">
                 <thead>
