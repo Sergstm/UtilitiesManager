@@ -2,13 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <title>Add page</title>
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row card-header shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col card-header">
             <h1>Add new Order</h1>
@@ -19,7 +20,7 @@
         </div>
     </div>
     <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col">
+        <div class="col-4">
             <form action="/saveOrder" method="post">
                 <div class="row justify-content-center">
                     <div class="form-group">
@@ -53,9 +54,7 @@
                 <button type="submit" class="btn btn-primary">Add order</button>
             </form>
         </div>
-    </div>
-    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col">
+        <div class="col-8">
             <form action="/delOrder" method="post">
                 <table class="table">
                     <thead>

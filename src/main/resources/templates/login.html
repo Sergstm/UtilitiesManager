@@ -2,19 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <title>Login page</title>
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row card-header shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col card-header">
             <h1>Log IN</h1>
         </div>
     </div>
-    <div class="row card-body border">
+    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
         <div class="col">
             <h3 th:if="${error}">Invalid Login or Password</h3>
             <h3 th:if="${logout}">You are logout</h3>
