@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col-4">
+        <div class="col-sm-4">
             <form action="/saveOrder" method="post">
                 <div class="row justify-content-center">
                     <div class="form-group">
@@ -54,7 +54,7 @@
                 <button type="submit" class="btn btn-primary">Add order</button>
             </form>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
             <form action="/delOrder" method="post">
                 <table class="table">
                     <thead>
@@ -66,6 +66,7 @@
                         <th>Present</th>
                         <th>Volume</th>
                         <th>Price</th>
+                        <th>X</th>
                     </tr>
                     </thead>
                     <tbody th:each="order : ${orders}">
