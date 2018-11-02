@@ -1,6 +1,6 @@
 
 body {
-    padding: 3%;
+    min-height: 100vh;
 }
 
 div {
@@ -9,6 +9,10 @@ div {
 
 button {
     margin: 1%;
+}
+
+.greet {
+    margin: 10%;
 }
 
 .login {

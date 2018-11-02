@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,23 +10,30 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row card-header shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col card-header">
-            <h1>Welcome to Utilities manager</h1>
-        </div>
-    </div>
-    <br>
-    <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="col">
-            <a href="/registration">
-                <button type="button" class="btn btn-secondary">Registration</button>
-            </a>
-            <a href="/login">
-                <button type="button" class="btn btn-secondary">Log In</button>
-            </a>
-            <a href="/addOrder">
-                <button type="button" class="btn btn-secondary">Add your Order</button>
-            </a>
+    <div class="row justify-content-center greet">
+        <div class="col-6">
+            <div class="row card-body shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="col">
+                    <div class="row card-header">
+                        <div class="col">
+                            <h1>Utilities manager</h1>
+                        </div>
+                    </div>
+                    <div class="row card-body">
+                        <div class="col">
+                            <a href="/registration">
+                                <button type="button" class="btn btn-secondary">Registration</button>
+                            </a>
+                            <a href="/login">
+                                <button type="button" class="btn btn-secondary">Log In</button>
+                            </a>
+                            <a href="/addOrder">
+                                <button type="button" class="btn btn-secondary">Add your Order</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
