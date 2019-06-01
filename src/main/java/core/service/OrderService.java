@@ -53,12 +53,7 @@ public class OrderService {
         LocalDateTime dateTime = LocalDateTime.now();
         Order order = new Order(name, prev, pres, tariff1, tariff2, vol, price, dateTime);
 
-        String currentLogin = userService.getCurrentLogin();
-        CustomUser customUser = userRepository.findByLogin(currentLogin).get();
-        List<Order> orders = customUser.getOrders();
-        int size = orders.size();
-        orders.add(size, order);
-        userRepository.save(customUser);
+        SaveUser(orderTemplate);
     }
 
     public Iterable<Order> getOrders() {
@@ -76,6 +71,10 @@ public class OrderService {
         }
         OrderTemplate orderTemplate = new OrderTemplate(name, tariff1, tariff2);
 
+        SaveUser(orderTemplate);
+    }
+
+    private void SaveUser(OrderTemplate orderTemplate) {
         String currentLogin = userService.getCurrentLogin();
         CustomUser customUser = userRepository.findByLogin(currentLogin).get();
         List<OrderTemplate> templates = customUser.getOrderTemplates();
